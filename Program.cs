@@ -11,5 +11,7 @@
         Console.WriteLine("hej igen");
 
         Console.WriteLine("nu borde det funka");
+
+        System.Console.WriteLine("Vi testar igen, hej hoj");
     }
 }
