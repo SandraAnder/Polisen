@@ -5,5 +5,7 @@
         Console.WriteLine("Hello, World!");
 
         Console.WriteLine("Hej Sandra");
+
+        Console.WriteLine("Nytt test");
     }
 }
