@@ -9,5 +9,7 @@
         Console.WriteLine("Nytt test");
 
         Console.WriteLine("hej igen");
+
+        Console.WriteLine("nu borde det funka");
     }
 }
