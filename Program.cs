@@ -10,6 +10,8 @@
 
         Console.WriteLine("hej igen");
 
+        Console.WriteLine("vi testar igen :D");
+
 
     }
     
