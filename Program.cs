@@ -9,8 +9,5 @@
         Console.WriteLine("Nytt test");
 
         Console.WriteLine("hej igen");
-
-
     }
-    
 }
