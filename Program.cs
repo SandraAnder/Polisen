@@ -7,5 +7,10 @@
         Console.WriteLine("Hej Sandra");
 
         Console.WriteLine("Nytt test");
+
+        Console.WriteLine("hej igen");
+
+
     }
+    
 }
