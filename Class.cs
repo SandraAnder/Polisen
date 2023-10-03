@@ -30,21 +30,31 @@ namespace Polisen
             int datum;
             string polisStation;
             string beskrivning;
-        
+
             Console.WriteLine("Lämna rapport");
 
-            Console.WriteLine("RapportNr: " + rapportNr);
+            Console.Write("RapportNr: ");
             int inputRapportNr = int.Parse(Console.ReadLine());
+            rapportNr = inputRapportNr;
 
-            Console.WriteLine("Datum: " datum);
+            Console.Write("Datum: ");
             int inputDatum = int.Parse(Console.ReadLine());
+            datum = inputDatum;
 
-            Console.WriteLine("Polisstation: " + polisStation);
+            Console.Write("Polisstation: ");
             string? inputStation = Console.ReadLine();
+            polisStation = inputStation;
 
-            Console.WriteLine("Beskrivning: " + beskrivning);
+            Console.Write("Beskrivning: ");
             string? inputBeskrivning = Console.ReadLine();
+            beskrivning = inputBeskrivning;
 
+            Console.WriteLine($"RapportNr: {rapportNr}");
+            Console.WriteLine($"Datum: {datum}");
+            Console.WriteLine($"Polisstation: {polisStation}");
+            Console.WriteLine($"Beskrivning: {beskrivning}");
+
+            
         }
     }
 }
