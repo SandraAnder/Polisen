@@ -20,10 +20,11 @@
                     break;
 
                 case 3:
+                    isRunning = false;
                     break;
                 
                 default:
-                    Console.WriteLine("");
+                    Console.WriteLine("Välj rätt");
                     break;       
             }
             
