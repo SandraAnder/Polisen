@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace Polisen
 {
     public class Polis
@@ -22,16 +24,12 @@ namespace Polisen
 
 
 
-
-
-
-
         public static void Rapport()
         {
-            public int rapportNr;
-            public int datum;
-            public string? polisStation;
-            public string? beskrivning;
+            int rapportNr;
+            int datum;
+            string polisStation;
+            string beskrivning;
         
             Console.WriteLine("Lämna rapport");
 
@@ -46,6 +44,20 @@ namespace Polisen
 
             Console.WriteLine("Beskrivning: " + beskrivning);
             string? inputBeskrivning = Console.ReadLine();
+
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
