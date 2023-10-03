@@ -10,6 +10,9 @@ namespace Polisen
 {
     public class Polis
     {
+        public string? namn { get; set; }
+        public int tjanstNr { get; set; }
+
         public static void RegUtryck()
         {
 
@@ -31,13 +34,14 @@ namespace Polisen
             string polisStation;
             string beskrivning;
 
+
             Console.WriteLine("Lämna rapport");
 
             Console.Write("RapportNr: ");
             int inputRapportNr = int.Parse(Console.ReadLine());
             rapportNr = inputRapportNr;
 
-            Console.Write("Datum: ");
+            Console.Write("Datum (XXMMÅÅ): ");
             int inputDatum = int.Parse(Console.ReadLine());
             datum = inputDatum;
 
@@ -53,7 +57,30 @@ namespace Polisen
             Console.WriteLine($"Datum: {datum}");
             Console.WriteLine($"Polisstation: {polisStation}");
             Console.WriteLine($"Beskrivning: {beskrivning}");
+            Console.WriteLine();
 
+        }
+        public static void RegPersonal()
+        {
+            List<Polis> rp = new List<Polis>();
+
+            Console.Write("Namn: ");
+            string? inputNamn = Console.ReadLine();
+
+            Console.Write("Tjänstnummer: ");
+            int inputTjanstNr = int.Parse(Console.ReadLine());
+
+            // Skapa ett Polis-objekt och lägg till det i listan
+            Polis polis = new Polis
+            {
+                namn = inputNamn,
+                tjanstNr = inputTjanstNr
+            };
+
+            rp.Add(polis);
+
+            Console.WriteLine($"Ny personal registrerad: {inputNamn}, {inputTjanstNr}");
+            Console.WriteLine();
             
         }
     }

@@ -9,7 +9,8 @@ internal class Program
         {
             Console.WriteLine("[1]: Rapportering av uttryckning");  
             Console.WriteLine("[2]: Rapporter");
-            Console.WriteLine("[3]: Avsluta");
+            Console.WriteLine("[3]: Registrera personal");
+            Console.WriteLine("[4]: Avsluta");
             Console.Write("Ditt val: ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -23,6 +24,10 @@ internal class Program
                     break;
 
                 case 3:
+                    Polis.RegPersonal();
+                    break;
+
+                case 4:
                     isRunning = false;
                     break;
                 
