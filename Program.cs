@@ -1,4 +1,6 @@
-﻿internal class Program
+﻿using Polisen;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
@@ -17,6 +19,7 @@
                     break;
 
                 case 2:
+                    Polis.Rapport();
                     break;
 
                 case 3:
