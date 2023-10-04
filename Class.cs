@@ -1,123 +1,118 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-
-namespace Polisen
+ public class Polis
 {
-    public class Polis
+    public string? Namn { get; set; }
+    public int TjanstNr { get; set; }
+
+    public static void RegUtryck()
     {
-        public string? namn { get; set; }
-        public int tjanstNr { get; set; }
+        List<string> regUtryck = new List<string>();
 
-        public static void RegUtryck()
+        Console.WriteLine("Gör en registrering");
+
+        Console.WriteLine("PLATS");
+        string? location = (Console.ReadLine());
+        Console.WriteLine("====================");
+
+        Console.WriteLine("TID");
+        double time = double.Parse(Console.ReadLine());
+        Console.WriteLine("====================");
+
+        Console.WriteLine("TYP");
+        string? type = (Console.ReadLine());
+        Console.WriteLine("====================");
+
+        Console.WriteLine("POLIS PÅ PLATS");
+        Console.Write("Förnamn:");
+        string? fName = (Console.ReadLine());
+
+        Console.Write("Efternamn: ");
+        string? lName = (Console.ReadLine());
+
+        string polisnamn = fName + " " + lName;
+
+        string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
+
+        //Polis rg = new Polis
+        // rg.Add(regUtrInput);
+        // Console.WriteLine(RegUtryck);
+        
+        // Console.WriteLine($"{regUtrInput}");
+
+    }
+
+
+
+
+
+
+
+
+    public static void Rapport()
+    {
+        int rapportNr;
+        int datum;
+        string polisStation;
+        string beskrivning;
+
+
+        Console.WriteLine("Lämna rapport");
+
+        Console.Write("RapportNr: ");
+        int inputRapportNr = int.Parse(Console.ReadLine());
+        rapportNr = inputRapportNr;
+
+        Console.Write("Datum (XXMMÅÅ): ");
+        int inputDatum = int.Parse(Console.ReadLine());
+        datum = inputDatum;
+
+        Console.Write("Polisstation: ");
+        string? inputStation = Console.ReadLine();
+        polisStation = inputStation;
+
+        Console.Write("Beskrivning: ");
+        string? inputBeskrivning = Console.ReadLine();
+        beskrivning = inputBeskrivning;
+
+        Console.WriteLine($"RapportNr: {rapportNr}");
+        Console.WriteLine($"Datum: {datum}");
+        Console.WriteLine($"Polisstation: {polisStation}");
+        Console.WriteLine($"Beskrivning: {beskrivning}");
+        Console.WriteLine();
+
+    }
+    
+    public static void RegPersonal()
+    {
+        
+        Console.Write("Namn: ");
+        string? inputNamn = Console.ReadLine();
+
+        Console.Write("Tjänstnummer: ");
+        int inputTjanstNr = int.Parse(Console.ReadLine());
+
+        // Skapa ett Polis-objekt och lägg till det i listan
+        Polis personal = new Polis
         {
-            List<String> RegUtryck = new List<string>();
+            Namn = inputNamn,
+            TjanstNr = inputTjanstNr
+        };
 
-            Console.WriteLine("Gör en registrering");
+        string cops = inputNamn + " " + inputTjanstNr;
 
-            Console.WriteLine("PLATS");
-            string location = (Console.ReadLine());
-            Console.WriteLine("====================");
+        List<Polis> rp = new List<Polis>();
+        Polis p = new Polis(cops);
+        rp.Add(p);
 
-            Console.WriteLine("TID");
-            double time = double.Parse(Console.ReadLine());
-            Console.WriteLine("====================");
-
-            Console.WriteLine("TYP");
-            string type = (Console.ReadLine());
-            Console.WriteLine("====================");
-
-            Console.WriteLine("POLIS PÅ PLATS");
-            Console.Write("Förnamn:");
-            string fName = (Console.ReadLine());
-
-            Console.Write("Efternamn: ");
-            string lName = (Console.ReadLine());
-
-            string polisnamn = fName + " " + lName;
-
-            string regUtrInput = ($"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}");
-            RegUtryck.Add(regUtrInput);
-            Console.WriteLine(RegUtryck);
-          
-          // Console.WriteLine($"{regUtrInput}");
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-
-        public static void Rapport()
-        {
-            int rapportNr;
-            int datum;
-            string polisStation;
-            string beskrivning;
-
-
-            Console.WriteLine("Lämna rapport");
-
-            Console.Write("RapportNr: ");
-            int inputRapportNr = int.Parse(Console.ReadLine());
-            rapportNr = inputRapportNr;
-
-            Console.Write("Datum (XXMMÅÅ): ");
-            int inputDatum = int.Parse(Console.ReadLine());
-            datum = inputDatum;
-
-            Console.Write("Polisstation: ");
-            string? inputStation = Console.ReadLine();
-            polisStation = inputStation;
-
-            Console.Write("Beskrivning: ");
-            string? inputBeskrivning = Console.ReadLine();
-            beskrivning = inputBeskrivning;
-
-            Console.WriteLine($"RapportNr: {rapportNr}");
-            Console.WriteLine($"Datum: {datum}");
-            Console.WriteLine($"Polisstation: {polisStation}");
-            Console.WriteLine($"Beskrivning: {beskrivning}");
-            Console.WriteLine();
-
-        }
-        public static void RegPersonal()
-        {
-            List<Polis> rp = new List<Polis>();
-
-            Console.Write("Namn: ");
-            string? inputNamn = Console.ReadLine();
-
-            Console.Write("Tjänstnummer: ");
-            int inputTjanstNr = int.Parse(Console.ReadLine());
-
-            // Skapa ett Polis-objekt och lägg till det i listan
-            Polis polis = new Polis
-            {
-                namn = inputNamn,
-                tjanstNr = inputTjanstNr
-            };
-
-            rp.Add(polis);
-
-            Console.WriteLine($"Ny personal registrerad: {inputNamn}, {inputTjanstNr}");
-            Console.WriteLine();
-            
-            
-        }
     }
 }
+*/
 
 
 
