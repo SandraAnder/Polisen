@@ -15,6 +15,38 @@ namespace Polisen
 
         public static void RegUtryck()
         {
+            List<String> RegUtryck = new List<string>();
+
+            Console.WriteLine("Gör en registrering");
+
+            Console.WriteLine("PLATS");
+            string location = (Console.ReadLine());
+            Console.WriteLine("====================");
+
+            Console.WriteLine("TID");
+            double time = double.Parse(Console.ReadLine());
+            Console.WriteLine("====================");
+
+            Console.WriteLine("TYP");
+            string type = (Console.ReadLine());
+            Console.WriteLine("====================");
+
+            Console.WriteLine("POLIS PÅ PLATS");
+            Console.Write("Förnamn:");
+            string fName = (Console.ReadLine());
+
+            Console.Write("Efternamn: ");
+            string lName = (Console.ReadLine());
+
+            string polisnamn = fName + " " + lName;
+
+            string regUtrInput = ($"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}");
+            RegUtryck.Add(regUtrInput);
+            Console.WriteLine(RegUtryck);
+          
+          // Console.WriteLine($"{regUtrInput}");
+
+
 
         }
 

@@ -7,7 +7,7 @@ internal class Program
         bool isRunning = true;
         while(isRunning)
         {
-            Console.WriteLine("[1]: Rapportering av uttryckning");  
+            Console.WriteLine("[1]: Rapportering av utryckning");  
             Console.WriteLine("[2]: Rapporter");
             Console.WriteLine("[3]: Registrera personal");
             Console.WriteLine("[4]: Avsluta");
@@ -17,6 +17,7 @@ internal class Program
             switch(choice)
             {
                 case 1:
+                    Polis.RegUtryck();
                     break;
 
                 case 2:
