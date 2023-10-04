@@ -10,6 +10,7 @@ internal class Program
     private static void Main(string[] args)
     {
         List<Polis> rp = new List<Polis>();
+        List<Polis> ru = new List<Polis>();
         
 
         bool isRunning = true;
@@ -51,21 +52,24 @@ internal class Program
 
 
 
- public class Polis
+public class Polis
 {
     public string? Namn { get; set; }
     public String TjanstNr { get; set; }
 
     public Polis(string name, string tjanstNr)
-        {
-            Namn = name;
-            TjanstNr = tjanstNr;
-        }
-
-    public static void RegUtryck()
     {
-        List<string> regUtryck = new List<string>();
+        Namn = name;
+        TjanstNr = tjanstNr;
+    }
+    
 
+   
+
+    public static void RegUtryck(List<Polis> ru)
+    {
+
+      
         Console.WriteLine("Gör en registrering");
 
         Console.WriteLine("PLATS");
@@ -90,6 +94,8 @@ internal class Program
         string polisnamn = fName + " " + lName;
 
         string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
+        Polis newPolis = new Polis(regUtrInput);
+        ru.Add(newPolis);
 
         //Polis rg = new Polis
         // rg.Add(regUtrInput);
@@ -98,9 +104,6 @@ internal class Program
         // Console.WriteLine($"{regUtrInput}");
 
     }
-
-
-
 
 
 
