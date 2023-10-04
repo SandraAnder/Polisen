@@ -82,6 +82,7 @@ namespace Polisen
             Console.WriteLine($"Ny personal registrerad: {inputNamn}, {inputTjanstNr}");
             Console.WriteLine();
             
+            
         }
     }
 }
