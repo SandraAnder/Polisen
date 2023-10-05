@@ -10,6 +10,8 @@ internal class Program
     private static void Main(string[] args)
     {
         List<Polis> rp = new List<Polis>();
+        rp.Add(new Polis("Lisa", "12345"));
+        rp.Add(new Polis("Anna", "67890"));
         List<RegistreringUtryck> ru = new List<RegistreringUtryck>();
         List<Rapporter> ra = new List<Rapporter>();
         
@@ -40,7 +42,7 @@ internal class Program
                     Polis.RegPersonal(rp);
                     break;
                 case 4:
-                    //XXX.XXX(XX);
+                    Info.ShowInformation(ru, ra, rp);
                     break;
 
                 case 5:
@@ -59,7 +61,7 @@ internal class Program
 public class Polis
 {
     public string? Name { get; set; }
-    public String TjanstNr { get; set; }
+    public string? TjanstNr { get; set; }
 
     public Polis(string name, string tjanstNr)
     {
@@ -68,24 +70,26 @@ public class Polis
     }
     
     public static void RegPersonal(List<Polis> rp)
+    {
+        
+        Console.Write("Namn: ");
+        string? inputNamn = Console.ReadLine();
+
+        Console.Write("Tjänstnummer: ");
+        string? inputTjanstNr = Console.ReadLine();
+        Console.WriteLine();
+
+        Polis personal = new Polis(inputNamn, inputTjanstNr);
+        rp.Add(personal);
+
+        Console.WriteLine("Alla namn i listan:");
+        Console.WriteLine();
+
+        for (int i = 0; i < rp.Count; i++)
         {
-            
-            Console.Write("Namn: ");
-            string? inputNamn = Console.ReadLine();
-
-            Console.Write("Tjänstnummer: ");
-            string? inputTjanstNr = Console.ReadLine();
-            Console.WriteLine();
-
-            Polis personal = new Polis(inputNamn, inputTjanstNr);
-            rp.Add(personal);
-
-            for (int i = 0; i < rp.Count; i++)
-            {
-                Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].TjanstNr}");
-                Console.WriteLine();
-            }
-        }    
+            Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].TjanstNr}");
+        }
+    }    
 
 }   
 public class RegistreringUtryck
@@ -186,12 +190,12 @@ public class Info
 {
     public Info(string showInfo)
     {
-        ShowInfo = showinfo;
+        ShowInfo = showInfo;
     }
 
     public string ShowInfo { get; }
 
-    static void ShowInformation(List<Info> sh)
+    public static void ShowInformation(List<RegistreringUtryck> ru, List<Rapporter> ra, List<Polis> rp)
     {
         Console.WriteLine("Välj vad du vill visa:");
         Console.WriteLine("1. Utryckningar");
@@ -206,28 +210,26 @@ public class Info
                 Console.WriteLine("Utryckningar:");
                 foreach (var rut in ru)
                 {
-                    Console.WriteLine(rut);
+                    Console.WriteLine(rut.RegUtrInput);
                 }
                 break;
             case 2:
                 Console.WriteLine("Rapporter:");
-                foreach (var rapport in rapporter)
+                foreach (var rapport in ra)
                 {
-                    Console.WriteLine(rapport);
+                    Console.WriteLine(rapport.RapportDocu);
                 }
                 break;
             case 3:
                 Console.WriteLine("Personal:");
-                foreach (var person in personal)
+                foreach (var personal in rp)
                 {
-                    Console.WriteLine(person);
+                    Console.WriteLine($"Namn: {personal.Name}, TjänstNr: {personal.TjanstNr}");
                 }
                 break;
             default:
                 Console.WriteLine("Ogiltigt val. Försök igen.");
                 break;
         }
-        Info showInfo = new Info();
-        sh.Add(showInfo);
     }
 }
