@@ -56,8 +56,6 @@ internal class Program
 }
 
 
-
-
 public class Polis
 {
     public string? Name { get; set; }
@@ -132,8 +130,6 @@ public class RegistreringUtryck
     }
 }
 
-
-
 public class Rapporter
 {
     public Rapporter(string rapportDocu)
@@ -183,5 +179,55 @@ public class Rapporter
         Rapporter rap = new Rapporter(rapportDocu);
         ra.Add(rap);
 
+    }
+}
+
+public class Info
+{
+    public Info(string showInfo)
+    {
+        ShowInfo = showinfo;
+    }
+
+    public string ShowInfo { get; }
+
+    static void ShowInformation(List<Info> sh)
+    {
+        Console.WriteLine("Välj vad du vill visa:");
+        Console.WriteLine("1. Utryckningar");
+        Console.WriteLine("2. Rapporter");
+        Console.WriteLine("3. Personal");
+
+        int val = Convert.ToInt32(Console.ReadLine());
+
+        switch (val)
+        {
+            case 1:
+                Console.WriteLine("Utryckningar:");
+                foreach (var rut in ru)
+                {
+                    Console.WriteLine(rut);
+                }
+                break;
+            case 2:
+                Console.WriteLine("Rapporter:");
+                foreach (var rapport in rapporter)
+                {
+                    Console.WriteLine(rapport);
+                }
+                break;
+            case 3:
+                Console.WriteLine("Personal:");
+                foreach (var person in personal)
+                {
+                    Console.WriteLine(person);
+                }
+                break;
+            default:
+                Console.WriteLine("Ogiltigt val. Försök igen.");
+                break;
+        }
+        Info showInfo = new Info();
+        sh.Add(showInfo);
     }
 }
