@@ -10,34 +10,40 @@ internal class Program
     private static void Main(string[] args)
     {
         List<Polis> rp = new List<Polis>();
-        List<Polis> ru = new List<Polis>();
+        List<RegistreringUtryck> ru = new List<RegistreringUtryck>();
+        List<Rapporter> ra = new List<Rapporter>();
         
 
         bool isRunning = true;
         while(isRunning)
         {
+            Console.WriteLine("--------Polisen 1984--------");
             Console.WriteLine("[1]: Rapportering av utryckning");  
             Console.WriteLine("[2]: Rapporter");
             Console.WriteLine("[3]: Registrera personal");
-            Console.WriteLine("[4]: Avsluta");
+            Console.WriteLine("[4]: Hämta info");
+            Console.WriteLine("[5]: Avsluta");
             Console.Write("Ditt val: ");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             switch(choice)
             {
                 case 1:
-                    Polis.RegUtryck();
+                    RegistreringUtryck.RegUtryck(ru);
                     break;
 
                 case 2:
-                    Polis.Rapport();
+                    Rapporter.Rapport(ra);
                     break;
 
                 case 3:
                     Polis.RegPersonal(rp);
                     break;
-
                 case 4:
+                    //XXX.XXX(XX);
+                    break;
+
+                case 5:
                     isRunning = false;
                     break;
                 
@@ -54,22 +60,47 @@ internal class Program
 
 public class Polis
 {
-    public string? Namn { get; set; }
+    public string? Name { get; set; }
     public String TjanstNr { get; set; }
 
     public Polis(string name, string tjanstNr)
     {
-        Namn = name;
+        Name = name;
         TjanstNr = tjanstNr;
     }
     
+    public static void RegPersonal(List<Polis> rp)
+        {
+            
+            Console.Write("Namn: ");
+            string? inputNamn = Console.ReadLine();
 
-   
+            Console.Write("Tjänstnummer: ");
+            string? inputTjanstNr = Console.ReadLine();
+            Console.WriteLine();
 
-    public static void RegUtryck(List<Polis> ru)
+            Polis personal = new Polis(inputNamn, inputTjanstNr);
+            rp.Add(personal);
+
+            for (int i = 0; i < rp.Count; i++)
+            {
+                Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].TjanstNr}");
+                Console.WriteLine();
+            }
+        }    
+
+}   
+public class RegistreringUtryck
+{
+    public RegistreringUtryck(string regUtrInput)
     {
+        RegUtrInput = regUtrInput;
+    }
 
-      
+    public string RegUtrInput { get; }
+
+    public static void RegUtryck(List<RegistreringUtryck> ru)
+    {
         Console.WriteLine("Gör en registrering");
 
         Console.WriteLine("PLATS");
@@ -90,26 +121,28 @@ public class Polis
 
         Console.Write("Efternamn: ");
         string? lName = (Console.ReadLine());
+        Console.WriteLine("====================");
 
         string polisnamn = fName + " " + lName;
 
         string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
-        Polis newPolis = new Polis(regUtrInput);
-        ru.Add(newPolis);
-
-        //Polis rg = new Polis
-        // rg.Add(regUtrInput);
-        // Console.WriteLine(RegUtryck);
-        
-        // Console.WriteLine($"{regUtrInput}");
+        RegistreringUtryck rut = new RegistreringUtryck(regUtrInput);
+        ru.Add(rut);
 
     }
+}
 
 
 
+public class Rapporter
+{
+    public Rapporter(string rapportDocu)
+    {
+        RapportDocu = rapportDocu;
+    }
 
-
-    public static void Rapport()
+    public string RapportDocu { get; }
+    public static void Rapport(List<Rapporter> ra)
     {
         int rapportNr;
         int datum;
@@ -122,44 +155,33 @@ public class Polis
         Console.Write("RapportNr: ");
         int inputRapportNr = int.Parse(Console.ReadLine());
         rapportNr = inputRapportNr;
+        Console.WriteLine("====================");
 
         Console.Write("Datum (XXMMÅÅ): ");
         int inputDatum = int.Parse(Console.ReadLine());
         datum = inputDatum;
+        Console.WriteLine("====================");
 
         Console.Write("Polisstation: ");
         string? inputStation = Console.ReadLine();
         polisStation = inputStation;
+        Console.WriteLine("====================");
 
         Console.Write("Beskrivning: ");
         string? inputBeskrivning = Console.ReadLine();
         beskrivning = inputBeskrivning;
+        Console.WriteLine("====================");
 
+        Console.WriteLine();
         Console.WriteLine($"RapportNr: {rapportNr}");
         Console.WriteLine($"Datum: {datum}");
         Console.WriteLine($"Polisstation: {polisStation}");
         Console.WriteLine($"Beskrivning: {beskrivning}");
         Console.WriteLine();
 
-    }
-    
-    public static void RegPersonal(List<Polis> rp)
-    {
-        
-        Console.Write("Namn: ");
-        string? inputNamn = Console.ReadLine();
+        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
+        Rapporter rap = new Rapporter(rapportDocu);
+        ra.Add(rap);
 
-        Console.Write("Tjänstnummer: ");
-        string? inputTjanstNr = Console.ReadLine();
-        Console.WriteLine();
-
-        Polis personal = new Polis(inputNamn, inputTjanstNr);
-        rp.Add(personal);
-
-        for (int i = 0; i < rp.Count; i++)
-        {
-            Console.WriteLine();
-            Console.WriteLine($"Namn: {rp[i].Namn}, TjänstNr: {rp[i].TjanstNr}");
-        }
     }
 }
