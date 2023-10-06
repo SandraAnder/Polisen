@@ -117,16 +117,42 @@ public class RegistreringUtryck
         string? type = (Console.ReadLine());
         Console.WriteLine("====================");
 
-        Console.WriteLine("POLIS PÅ PLATS");
-        Console.Write("Förnamn:");
-        string? fName = (Console.ReadLine());
+        Console.WriteLine("Hur många poliser var på plats?"); 
+        int antal = int.Parse(Console.ReadLine()); 
 
-        Console.Write("Efternamn: ");
-        string? lName = (Console.ReadLine());
-        Console.WriteLine("====================");
+        string fName = "";
+        string lName = "";
 
+        if(antal > 1)
+        {
+            for(int i = 0; i < antal; i++)
+            {
+                Console.WriteLine("POLIS PÅ PLATS");
+                Console.Write("Förnamn:");
+                fName = (Console.ReadLine());
+
+                Console.Write("Efternamn: ");
+                lName = (Console.ReadLine());
+                Console.WriteLine("====================");
+
+
+            }
+
+        }
+        else
+        {
+            Console.WriteLine("POLIS PÅ PLATS");
+            Console.Write("Förnamn:");
+            fName = (Console.ReadLine());
+
+            Console.Write("Efternamn: ");
+            lName = (Console.ReadLine());
+            Console.WriteLine("====================");
+
+        }
+
+     
         string polisnamn = fName + " " + lName;
-
         string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
         RegistreringUtryck rut = new RegistreringUtryck(regUtrInput);
         ru.Add(rut);
