@@ -1,19 +1,56 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
- public class Polis
+
+public class Polis
 {
-    public string? Namn { get; set; }
-    public int TjanstNr { get; set; }
+    public string? Name { get; set; }
+    public string? TjanstNr { get; set; }
 
-    public static void RegUtryck()
+    public Polis(string name, string tjanstNr)
     {
-        List<string> regUtryck = new List<string>();
+        Name = name;
+        TjanstNr = tjanstNr;
+    }
+    
+    public static void RegPersonal(List<Polis> rp)
+    {
+        
+        Console.Write("Namn: ");
+        string? inputNamn = Console.ReadLine();
 
+        Console.Write("Tjänstnummer: ");
+        string? inputTjanstNr = Console.ReadLine();
+        Console.WriteLine();
+
+        Polis personal = new Polis(inputNamn, inputTjanstNr);
+        rp.Add(personal);
+
+        Console.WriteLine("Alla namn i listan:");
+        Console.WriteLine();
+
+        for (int i = 0; i < rp.Count; i++)
+        {
+            Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].TjanstNr}");
+        }
+    }    
+
+}   
+public class RegistreringUtryck
+{
+    public RegistreringUtryck(string regUtrInput)
+    {
+        RegUtrInput = regUtrInput;
+    }
+
+    public string RegUtrInput { get; }
+
+    public static void RegUtryck(List<RegistreringUtryck> ru)
+    {
         Console.WriteLine("Gör en registrering");
 
         Console.WriteLine("PLATS");
@@ -28,33 +65,56 @@ using System.Threading.Tasks;
         string? type = (Console.ReadLine());
         Console.WriteLine("====================");
 
-        Console.WriteLine("POLIS PÅ PLATS");
-        Console.Write("Förnamn:");
-        string? fName = (Console.ReadLine());
+        Console.WriteLine("Hur många poliser var på plats?"); 
+        int antal = int.Parse(Console.ReadLine()); 
 
-        Console.Write("Efternamn: ");
-        string? lName = (Console.ReadLine());
+        string fName = "";
+        string lName = "";
 
+        if(antal > 1)
+        {
+            for(int i = 0; i < antal; i++)
+            {
+                Console.WriteLine("POLIS PÅ PLATS");
+                Console.Write("Förnamn:");
+                fName = (Console.ReadLine());
+
+                Console.Write("Efternamn: ");
+                lName = (Console.ReadLine());
+                Console.WriteLine("====================");
+            }
+
+        }
+        else
+        {
+            Console.WriteLine("POLIS PÅ PLATS");
+            Console.Write("Förnamn:");
+            fName = (Console.ReadLine());
+
+            Console.Write("Efternamn: ");
+            lName = (Console.ReadLine());
+            Console.WriteLine("====================");
+
+        }
+
+     
         string polisnamn = fName + " " + lName;
-
         string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
-
-        //Polis rg = new Polis
-        // rg.Add(regUtrInput);
-        // Console.WriteLine(RegUtryck);
-        
-        // Console.WriteLine($"{regUtrInput}");
+        RegistreringUtryck rut = new RegistreringUtryck(regUtrInput);
+        ru.Add(rut);
 
     }
+}
 
+public class Rapporter
+{
+    public Rapporter(string rapportDocu)
+    {
+        RapportDocu = rapportDocu;
+    }
 
-
-
-
-
-
-
-    public static void Rapport()
+    public string RapportDocu { get; }
+    public static void Rapport(List<Rapporter> ra)
     {
         int rapportNr;
         int datum;
@@ -67,52 +127,84 @@ using System.Threading.Tasks;
         Console.Write("RapportNr: ");
         int inputRapportNr = int.Parse(Console.ReadLine());
         rapportNr = inputRapportNr;
+        Console.WriteLine("====================");
 
         Console.Write("Datum (XXMMÅÅ): ");
         int inputDatum = int.Parse(Console.ReadLine());
         datum = inputDatum;
+        Console.WriteLine("====================");
 
         Console.Write("Polisstation: ");
         string? inputStation = Console.ReadLine();
         polisStation = inputStation;
+        Console.WriteLine("====================");
 
         Console.Write("Beskrivning: ");
         string? inputBeskrivning = Console.ReadLine();
         beskrivning = inputBeskrivning;
+        Console.WriteLine("====================");
 
+        Console.WriteLine();
         Console.WriteLine($"RapportNr: {rapportNr}");
         Console.WriteLine($"Datum: {datum}");
         Console.WriteLine($"Polisstation: {polisStation}");
         Console.WriteLine($"Beskrivning: {beskrivning}");
         Console.WriteLine();
 
-    }
-    
-    public static void RegPersonal()
-    {
-        
-        Console.Write("Namn: ");
-        string? inputNamn = Console.ReadLine();
-
-        Console.Write("Tjänstnummer: ");
-        int inputTjanstNr = int.Parse(Console.ReadLine());
-
-        // Skapa ett Polis-objekt och lägg till det i listan
-        Polis personal = new Polis
-        {
-            Namn = inputNamn,
-            TjanstNr = inputTjanstNr
-        };
-
-        string cops = inputNamn + " " + inputTjanstNr;
-
-        List<Polis> rp = new List<Polis>();
-        Polis p = new Polis(cops);
-        rp.Add(p);
+        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
+        Rapporter rap = new Rapporter(rapportDocu);
+        ra.Add(rap);
 
     }
 }
-*/
+
+public class Info
+{
+    public Info(string showInfo)
+    {
+        ShowInfo = showInfo;
+    }
+
+    public string ShowInfo { get; }
+
+    public static void ShowInformation(List<RegistreringUtryck> ru, List<Rapporter> ra, List<Polis> rp)
+    {
+        Console.WriteLine("Välj vad du vill visa:");
+        Console.WriteLine("1. Utryckningar");
+        Console.WriteLine("2. Rapporter");
+        Console.WriteLine("3. Personal");
+
+        int val = Convert.ToInt32(Console.ReadLine());
+
+        switch (val)
+        {
+            case 1:
+                Console.WriteLine("Utryckningar:");
+                foreach (var rut in ru)
+                {
+                    Console.WriteLine(rut.RegUtrInput);
+                }
+                break;
+            case 2:
+                Console.WriteLine("Rapporter:");
+                foreach (var rapport in ra)
+                {
+                    Console.WriteLine(rapport.RapportDocu);
+                }
+                break;
+            case 3:
+                Console.WriteLine("Personal:");
+                foreach (var personal in rp)
+                {
+                    Console.WriteLine($"Namn: {personal.Name}, TjänstNr: {personal.TjanstNr}");
+                }
+                break;
+            default:
+                Console.WriteLine("Ogiltigt val. Försök igen.");
+                break;
+        }
+    }
+}
 
 
 
