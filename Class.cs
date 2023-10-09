@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-
+/*
 public class Polis
 {
     public string? Name { get; set; }
@@ -206,10 +206,27 @@ public class Info
     }
 }
 
+class Name
+{
+    public string Namn { get; }
+
+    public Name(string namn)
+    {
+        Namn = namn;
+    }
+    public override string ToString()
+    {
+        return $"{Namn}";
+    }
+}
+
+class DateTime
+{
+    
+}
 
 
-
-
+*/
 
 
 
