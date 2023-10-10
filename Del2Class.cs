@@ -42,7 +42,7 @@ public class Name
     }
 }*/
 public class Dispatch
-{/*
+{
     public Dispatch(string regUtrInput)
     {
         RegUtrInput = regUtrInput;
@@ -52,31 +52,33 @@ public class Dispatch
 
     public static void RegUtryck(List<Dispatch> ru)
     {
-        string fName = "";
-        string lName = "";
+        string Name = "";
+
+
+        Console.WriteLine("POLIS PÅ PLATS");
+        Console.Write("Namn:");
+        Name = (Console.ReadLine());
+
+        /*int antal = 0;
+       
 
         if(antal > 1)
         {
             for(int i = 0; i < antal; i++)
             {
                 Console.WriteLine("POLIS PÅ PLATS");
-                Console.Write("Förnamn:");
-                fName = (Console.ReadLine());
+                Console.Write("Namn:");
+                Name = (Console.ReadLine());
 
-                Console.Write("Efternamn: ");
-                lName = (Console.ReadLine());
-                Console.WriteLine("====================");
             }
         }
         else
         {
             Console.WriteLine("POLIS PÅ PLATS");
-            Console.Write("Förnamn:");
-            fName = (Console.ReadLine());
+            Console.Write("Namn:");
+            Name = (Console.ReadLine());
 
-            Console.Write("Efternamn: ");
-            lName = (Console.ReadLine());
-            Console.WriteLine("====================");
-        }
-    }*/
+            
+        }*/
+    }
 }  

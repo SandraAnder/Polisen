@@ -49,14 +49,20 @@ internal class Program
                     string? type = (Console.ReadLine());
                     Console.WriteLine("====================");
 
-                    Console.WriteLine("Hur många poliser var på plats?"); 
-                    int antal = int.Parse(Console.ReadLine()); 
+                    Console.WriteLine("Polis på plats"); 
+                    Console.Write("Namn: ");
+                    string? nmPolice = Console.ReadLine();
+                    //Console.WriteLine($"Namn: {Police.NameP}");
+                    
+                    //int antal = int.Parse(Console.ReadLine()); 
 
                     //string polisnamn = fName + " " + lName;
-                    //string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
-                    //Dispatch rut = new Dispatch(regUtrInput);
-                    //ru.Add(rut);
-                    Console.WriteLine($"Namn: {Police.NameP}");
+                    string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {nmPolice}";
+                    Dispatch rut = new Dispatch(regUtrInput);
+                    ru.Add(rut);
+                    
+                    
+                    
                     break;
 
                 case 2:
