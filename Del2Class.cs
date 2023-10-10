@@ -6,37 +6,70 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-public class Polis
+public class Police
 {
     public string? Name { get; set; }
-    public string? TjanstNr { get; set; }
+    public string? ServiceNr { get; set; }
 
-    public Polis(string name, string tjanstNr)
+    public Police(string name, string serviceNr)
     {
         Name = name;
-        TjanstNr = tjanstNr;
+        ServiceNr = serviceNr;
     }
     
-    public static void RegPersonal(List<Polis> rp)
+    public static void RegPersonal(List<Police> rp)
     {
-        
-        Console.Write("Namn: ");
-        string? inputNamn = Console.ReadLine();
-
-        Console.Write("Tjänstnummer: ");
-        string? inputTjanstNr = Console.ReadLine();
-        Console.WriteLine();
-
-        Polis personal = new Polis(inputNamn, inputTjanstNr);
-        rp.Add(personal);
-
-        Console.WriteLine("Alla namn i listan:");
-        Console.WriteLine();
-
         for (int i = 0; i < rp.Count; i++)
         {
-            Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].TjanstNr}");
+            Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].ServiceNr}");
         }
     }    
-
 }
+
+public class Name
+{
+    public string? NamePolice { get; set; }
+    public Name(string namePolice)
+    {
+        NamePolice = namePolice;
+    }
+}
+public class Dispatch
+{
+    public Dispatch(string regUtrInput)
+    {
+        RegUtrInput = regUtrInput;
+    }
+
+    public string RegUtrInput { get; }
+
+    public static void RegUtryck(List<Dispatch> ru)
+    {
+        string fName = "";
+        string lName = "";
+
+        if(antal > 1)
+        {
+            for(int i = 0; i < antal; i++)
+            {
+                Console.WriteLine("POLIS PÅ PLATS");
+                Console.Write("Förnamn:");
+                fName = (Console.ReadLine());
+
+                Console.Write("Efternamn: ");
+                lName = (Console.ReadLine());
+                Console.WriteLine("====================");
+            }
+        }
+        else
+        {
+            Console.WriteLine("POLIS PÅ PLATS");
+            Console.Write("Förnamn:");
+            fName = (Console.ReadLine());
+
+            Console.Write("Efternamn: ");
+            lName = (Console.ReadLine());
+            Console.WriteLine("====================");
+        }
+    }
+}  
