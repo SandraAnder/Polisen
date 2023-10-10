@@ -38,15 +38,24 @@ internal class Program
                     Console.WriteLine("Gör en registrering");
 
                     Console.WriteLine("PLATS");
-                    string? location = (Console.ReadLine());
+                    string? location = Console.ReadLine();
                     Console.WriteLine("====================");
 
-                    Console.WriteLine("TID");
-                    double time = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Ange ett datum och tid (YYYY-MM-DD HH:mm:ss): ");
+                    string? dateT = Console.ReadLine();
+                    try
+                    {
+                        Time time = new Time(dateT);
+                        time.DisplayTime();
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     Console.WriteLine("====================");
 
                     Console.WriteLine("TYP");
-                    string? type = (Console.ReadLine());
+                    string? type = Console.ReadLine();
                     Console.WriteLine("====================");
 
                     Console.WriteLine("Polis på plats"); 
@@ -57,7 +66,7 @@ internal class Program
                     //int antal = int.Parse(Console.ReadLine()); 
 
                     //string polisnamn = fName + " " + lName;
-                    string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {nmPolice}";
+                    string regUtrInput = $"Plats: {location} Tid: {dateT}  Typ: {type}  Polis på plats: {nmPolice}";
                     Dispatch rut = new Dispatch(regUtrInput);
                     ru.Add(rut);
                     
@@ -67,6 +76,17 @@ internal class Program
 
                 case 2:
                     //Rapporter.Rapport(ra);
+                    Console.WriteLine("Ange ett datum och tid (YYYY-MM-DD HH:mm:ss): ");
+                    string input = Console.ReadLine();
+                    try
+                    {
+                        Time time = new Time(input);
+                        time.DisplayTime();
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                     break;
 
                 case 3:

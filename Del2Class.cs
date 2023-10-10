@@ -82,3 +82,25 @@ public class Dispatch
         }*/
     }
 }  
+class Time
+{
+    public DateTime DateTimeValue { get; set; }
+
+    public Time(string input)
+    {
+        // Försök att konvertera användarens inmatning till ett DateTime-objekt
+        if (DateTime.TryParse(input, out DateTime result))
+        {
+            DateTimeValue = result;
+        }
+        else
+        {
+            throw new ArgumentException("Ogiltigt datum och tid format.");
+        }
+    }
+
+    public void DisplayTime()
+    {
+        Console.WriteLine($"Du har angett datum och tid: {DateTimeValue.ToString("yyyy-MM-dd HH:mm:ss")}");
+    }
+}
