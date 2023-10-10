@@ -10,8 +10,11 @@ internal class Program
     private static void Main(string[] args)
     {
         List<Police> rp = new List<Police>();
-        rp.Add(new Police("Lisa", "12345"));
-        rp.Add(new Police("Anna", "67890"));
+        rp.Add(new Police("Kalle", "46345"));
+        rp.Add(new Police("Björn", "89890"));
+        //List<Police> nm = new List<Police>();
+        //nm.Add(new Police("Lisa", "12345"));
+        //nm.Add(new Police("Anna", "67890"));
         List<Dispatch> ru = new List<Dispatch>();
         //List<Rapporter> ra = new List<Rapporter>();
         
@@ -49,11 +52,11 @@ internal class Program
                     Console.WriteLine("Hur många poliser var på plats?"); 
                     int antal = int.Parse(Console.ReadLine()); 
 
-                    string polisnamn = fName + " " + lName;
-                    string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
-                    Dispatch rut = new Dispatch(regUtrInput);
-                    ru.Add(rut);
-                    Console.WriteLine($"Namn: {Name.NamePolice}");
+                    //string polisnamn = fName + " " + lName;
+                    //string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {polisnamn}";
+                    //Dispatch rut = new Dispatch(regUtrInput);
+                    //ru.Add(rut);
+                    Console.WriteLine($"Namn: {Police.NameP}");
                     break;
 
                 case 2:
@@ -62,15 +65,16 @@ internal class Program
 
                 case 3:
                     Console.Write("Namn: ");
-                    string? inputName = Console.ReadLine();
+                    string? namePolice = Console.ReadLine();
                     Console.Write("Tjänstnummer: ");
                     string? inputServiceNr = Console.ReadLine();
                     Console.WriteLine();
-                    Police personal = new Police(inputName, inputServiceNr);
+                    Police personal = new Police(namePolice, inputServiceNr);
                     rp.Add(personal);
                     Console.WriteLine("Alla namn i listan:");
                     Console.WriteLine();
-                    Police.RegPersonal(rp);
+                    Police.NameP(rp);
+                    Police.ServiceNrP(rp);
                     break;
                 case 4:
                     //Info.ShowInformation(ru, ra, rp);

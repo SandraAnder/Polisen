@@ -17,15 +17,22 @@ public class Police
         ServiceNr = serviceNr;
     }
     
-    public static void RegPersonal(List<Police> rp)
+    public static void NameP(List<Police> rp)
     {
         for (int i = 0; i < rp.Count; i++)
         {
-            Console.WriteLine($"Namn: {rp[i].Name}, TjänstNr: {rp[i].ServiceNr}");
+            Console.WriteLine($"Namn: {rp[i].Name}");
         }
-    }    
+    }
+    public static void ServiceNrP(List<Police> rp)
+    {
+        for (int j = 0; j < rp.Count; j++)
+        {
+            Console.WriteLine($"TjänstNr: {rp[j].ServiceNr}");
+        }
+    }  
 }
-
+/*
 public class Name
 {
     public string? NamePolice { get; set; }
@@ -33,9 +40,9 @@ public class Name
     {
         NamePolice = namePolice;
     }
-}
+}*/
 public class Dispatch
-{
+{/*
     public Dispatch(string regUtrInput)
     {
         RegUtrInput = regUtrInput;
@@ -71,5 +78,5 @@ public class Dispatch
             lName = (Console.ReadLine());
             Console.WriteLine("====================");
         }
-    }
+    }*/
 }  
