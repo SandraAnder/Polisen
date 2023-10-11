@@ -16,21 +16,7 @@ public class Police
         Name = name;
         ServiceNr = serviceNr;
     }
-    
-    public static void NameP(List<Police> rp)
-    {
-        for (int i = 0; i < rp.Count; i++)
-        {
-            Console.WriteLine($"Namn: {rp[i].Name}");
-        }
-    }
-    public static void ServiceNrP(List<Police> rp)
-    {
-        for (int j = 0; j < rp.Count; j++)
-        {
-            Console.WriteLine($"TjänstNr: {rp[j].ServiceNr}");
-        }
-    }  
+   
 }
 
 
@@ -43,38 +29,15 @@ public class Dispatch
 
     public string RegUtrInput { get; }
 
-    public static void RegUtryck(List<Dispatch> ru)
+    public static void RegUtryck(List<Dispatch> ru, string name)
     {
-        string Name = "";
 
 
-        Console.WriteLine("POLIS PÅ PLATS");
-        Console.Write("Namn:");
-        Name = (Console.ReadLine());
-
-        /*int antal = 0;
+        //flytta över detta till dispatch
        
-
-        if(antal > 1)
-        {
-            for(int i = 0; i < antal; i++)
-            {
-                Console.WriteLine("POLIS PÅ PLATS");
-                Console.Write("Namn:");
-                Name = (Console.ReadLine());
-
-            }
-        }
-        else
-        {
-            Console.WriteLine("POLIS PÅ PLATS");
-            Console.Write("Namn:");
-            Name = (Console.ReadLine());
-
-            
-        }*/
     }
 }  
+
 class Time
 {
     public DateTime DateTimeValue { get; set; }
@@ -99,7 +62,7 @@ class Time
 }
 
 
-class Timee
+public class Timee
 {
     public DateTime DateTimeValue { get; set; }
 
@@ -109,7 +72,7 @@ class Timee
     }
 }
 
-class Rapporter
+public class Rapporter
 {
     public int RapportNr { get; set; }
     public Timee Datum { get; set; }
@@ -123,7 +86,7 @@ class Rapporter
         PolisStation = polisStation;
         Beskrivning = beskrivning;
     }
-    public static void rapportis()
+    //public static void rapportis()
 }
 
 public class Info
@@ -157,7 +120,7 @@ public class Info
                 Console.WriteLine("Rapporter:");
                 foreach (var rapport in ra)
                 {
-                    Console.WriteLine(rapport.RapportNr);
+                    Console.WriteLine(rapport);
                 }
                 break;
             case 3:

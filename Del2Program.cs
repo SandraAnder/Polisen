@@ -39,7 +39,7 @@ internal class Program
                     Console.WriteLine("====================");
 
                     Console.WriteLine("TID");
-                    double time = double.Parse(Console.ReadLine());
+                    double timee = double.Parse(Console.ReadLine());
                     Console.WriteLine("====================");
 
                     Console.WriteLine("TYP");
@@ -48,9 +48,10 @@ internal class Program
 
                     Console.WriteLine("Polis på plats"); 
                     Console.Write("Namn: ");
+                    
                     string? nmPolice = Console.ReadLine();
                     
-                    string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {nmPolice}";
+                    string regUtrInput = $"Plats: {location} Tid: {timee}  Typ: {type}  Polis på plats: {nmPolice}";
                     Dispatch rut = new Dispatch(regUtrInput);
                     ru.Add(rut);
                     break;
@@ -77,13 +78,18 @@ internal class Program
 
                         Rapporter rapport = new Rapporter(inputRapportNr, new Timee(datum), inputStation, inputBeskrivning);
                         ra.Add(rapport);
+                        
+                        string rapportOutput = $"Rapportnummer: {inputRapportNr} Tid: {datum}  Beskrivnign: {inputBeskrivning}";
+                        ra.Add(rapportOutput);
 
                         Console.WriteLine($"Rapporten har lagts till: RapportNr: {rapport.RapportNr}, Datum: {rapport.Datum.DateTimeValue}, Polisstation: {rapport.PolisStation}, Beskrivning: {rapport.Beskrivning}");
                     }
                     else
                     {
                         Console.WriteLine("Ogiltigt datumformat.");
+                        
                     }
+                   
                     break;
 
                 case 3:
@@ -95,9 +101,16 @@ internal class Program
                     Police personal = new Police(namePolice, inputServiceNr);
                     rp.Add(personal);
                     Console.WriteLine("Alla namn i listan:");
+                    for (int i = 0; i < rp.Count; i++)
+                    {
+                    
+                        Console.WriteLine($"Namn: {rp[i].Name} tjänstenummer: {rp[i].ServiceNr}");
+                    }
                     Console.WriteLine();
-                    Police.NameP(rp);
-                    Police.ServiceNrP(rp);
+                    //Police.PoliceInfo(rp);
+                    
+
+                    
                     break;
                 case 4:
                     Info.ShowInformation(ru, ra, rp);
