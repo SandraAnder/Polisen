@@ -32,15 +32,8 @@ public class Police
         }
     }  
 }
-/*
-public class Name
-{
-    public string? NamePolice { get; set; }
-    public Name(string namePolice)
-    {
-        NamePolice = namePolice;
-    }
-}*/
+
+
 public class Dispatch
 {
     public Dispatch(string regUtrInput)
@@ -95,7 +88,7 @@ class Time
         }
         else
         {
-            throw new ArgumentException("Ogiltigt datum och tid format.");
+            Console.WriteLine("Ogiltigt datum och tid format.");
         }
     }
 
@@ -106,40 +99,77 @@ class Time
 }
 
 
+class Timee
+{
+    public DateTime DateTimeValue { get; set; }
+
+    public Timee(DateTime dateTime)
+    {
+        DateTimeValue = dateTime;
+    }
+}
+
 class Rapporter
 {
-    public string RapportDocu { get; set;}
-    public int RapportNr {get; set;}
-    public int Datum {get; set;}
-    public string PolisStation {get; set;}
-    public string Beskrivning {get; set;}
+    public int RapportNr { get; set; }
+    public Timee Datum { get; set; }
+    public string PolisStation { get; set; }
+    public string Beskrivning { get; set; }
 
-    
-
-        
-    public Rapporter(string rapportDocu, string polisStation, string beskrivning, int rapportNr, int datum)
+    public Rapporter(int rapportNr, Timee datum, string polisStation, string beskrivning)
     {
-        RapportDocu = rapportDocu;
         RapportNr = rapportNr;
         Datum = datum;
         PolisStation = polisStation;
         Beskrivning = beskrivning;
+    }
+    public static void rapportis()
+}
 
-       
+public class Info
+{
+    public Info(string showInfo)
+    {
+        ShowInfo = showInfo;
     }
 
-    public static void Rapport(List<Rapporter> ra, int rapportNr, int datum, string polisStation, string beskrivning)
+    public string ShowInfo { get; }
+
+    public static void ShowInformation(List<Dispatch> ru, List<Rapporter> ra, List<Police> rp)
     {
-        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
-        Rapporter rap = new Rapporter(rapportDocu, polisStation, beskrivning, rapportNr, datum);
-        ra.Add(rap);
+        Console.WriteLine("Välj vad du vill visa:");
+        Console.WriteLine("1. Utryckningar");
+        Console.WriteLine("2. Rapporter");
+        Console.WriteLine("3. Personal");
+
+        int val = Convert.ToInt32(Console.ReadLine());
+
+        switch (val)
+        {
+            case 1:
+                Console.WriteLine("Utryckningar:");
+                foreach (var rut in ru)
+                {
+                    Console.WriteLine(rut.RegUtrInput);
+                }
+                break;
+            case 2:
+                Console.WriteLine("Rapporter:");
+                foreach (var rapport in ra)
+                {
+                    Console.WriteLine(rapport.RapportNr);
+                }
+                break;
+            case 3:
+                Console.WriteLine("Personal:");
+                foreach (var personal in rp)
+                {
+                    Console.WriteLine($"Namn: {personal.Name}, TjänstNr: {personal.ServiceNr}");
+                }
+                break;
+            default:
+                Console.WriteLine("Ogiltigt val. Försök igen.");
+                break;
+        }
     }
-    /*public static void Rapport(List<Rapporter> ra, int polisStation, string beskrivning, int rapportNr, int datum)
-    {
-
-        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
-        Rapporter rap = new Rapporter(rapportDocu);
-        ra.Add(rap);
-
-    }*/
 }

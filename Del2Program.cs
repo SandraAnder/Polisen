@@ -13,11 +13,8 @@ internal class Program
         List<Police> rp = new List<Police>();
         rp.Add(new Police("Kalle", "46345"));
         rp.Add(new Police("Björn", "89890"));
-        //List<Police> nm = new List<Police>();
-        //nm.Add(new Police("Lisa", "12345"));
-        //nm.Add(new Police("Anna", "67890"));
         List<Dispatch> ru = new List<Dispatch>();
-        //List<Rapporter> ra = new List<Rapporter>();
+        List<Rapporter> ra = new List<Rapporter>();
         
 
         bool isRunning = true;
@@ -35,16 +32,14 @@ internal class Program
             switch(choice)
             {
                 case 1:
-                    //RegistreringUtryck.RegUtryck(ru);
                     Console.WriteLine("Gör en registrering");
 
                     Console.WriteLine("PLATS");
-                    string? location = (Console.ReadLine());
+                    string? location = Console.ReadLine();
                     Console.WriteLine("====================");
 
                     Console.WriteLine("TID");
                     double time = double.Parse(Console.ReadLine());
-                    
                     Console.WriteLine("====================");
 
                     Console.WriteLine("TYP");
@@ -54,54 +49,41 @@ internal class Program
                     Console.WriteLine("Polis på plats"); 
                     Console.Write("Namn: ");
                     string? nmPolice = Console.ReadLine();
-                    //Console.WriteLine($"Namn: {Police.NameP}");
                     
-                    //int antal = int.Parse(Console.ReadLine()); 
-
-                    //string polisnamn = fName + " " + lName;
                     string regUtrInput = $"Plats: {location} Tid: {time}  Typ: {type}  Polis på plats: {nmPolice}";
                     Dispatch rut = new Dispatch(regUtrInput);
                     ru.Add(rut);
-                    
-                    
-                    
                     break;
 
                 case 2:
-                    //Rapporter.Rapport();
                     Console.WriteLine("Lämna rapport");
 
                     Console.Write("RapportNr: ");
                     int inputRapportNr = int.Parse(Console.ReadLine());
-                    rapportNr = inputRapportNr;
                     Console.WriteLine("====================");
 
-                    Console.Write("Datum (XXMMÅÅ): ");
-                    int inputDatum = int.Parse(Console.ReadLine());
-                    datum = inputDatum;
+                    Console.Write("Datum (ÅÅÅÅ-MM-DD HH:mm:ss): ");
+                    string? inputDatum = Console.ReadLine();
                     Console.WriteLine("====================");
+                    if (DateTime.TryParse(inputDatum, out DateTime datum))
+                    {
+                        Console.Write("Polisstation: ");
+                        string? inputStation = Console.ReadLine();
+                        Console.WriteLine("====================");
 
-                    Console.Write("Polisstation: ");
-                    string? inputStation = Console.ReadLine();
-                    polisStation = inputStation;
-                    Console.WriteLine("====================");
+                        Console.Write("Beskrivning: ");
+                        string? inputBeskrivning = Console.ReadLine();
+                        Console.WriteLine("====================");
 
-                    Console.Write("Beskrivning: ");
-                    string? inputBeskrivning = Console.ReadLine();
-                    beskrivning = inputBeskrivning;
-                    Console.WriteLine("====================");
+                        Rapporter rapport = new Rapporter(inputRapportNr, new Timee(datum), inputStation, inputBeskrivning);
+                        ra.Add(rapport);
 
-                    Console.WriteLine();
-                    Console.WriteLine($"RapportNr: {rapportNr}");
-                    Console.WriteLine($"Datum: {datum}");
-                    Console.WriteLine($"Polisstation: {polisStation}");
-                    Console.WriteLine($"Beskrivning: {beskrivning}");
-                    Console.WriteLine();
-
-                    /*string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
-                    Rapporter rap = new Rapporter(rapportDocu);
-                    ra.Add(rap);*/
-                    
+                        Console.WriteLine($"Rapporten har lagts till: RapportNr: {rapport.RapportNr}, Datum: {rapport.Datum.DateTimeValue}, Polisstation: {rapport.PolisStation}, Beskrivning: {rapport.Beskrivning}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ogiltigt datumformat.");
+                    }
                     break;
 
                 case 3:
@@ -118,7 +100,7 @@ internal class Program
                     Police.ServiceNrP(rp);
                     break;
                 case 4:
-                    //Info.ShowInformation(ru, ra, rp);
+                    Info.ShowInformation(ru, ra, rp);
                     break;
 
                 case 5:
