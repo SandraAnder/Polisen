@@ -76,12 +76,10 @@ internal class Program
                         string? inputBeskrivning = Console.ReadLine();
                         Console.WriteLine("====================");
 
-                        Rapporter rapport = new Rapporter(inputRapportNr, new Timee(datum), inputStation, inputBeskrivning);
-                        ra.Add(rapport);
-                        
                         string rapportOutput = $"Rapportnummer: {inputRapportNr} Tid: {datum}  Beskrivnign: {inputBeskrivning}";
-                        ra.Add(rapportOutput);
-
+                        Rapporter rapport = new Rapporter(rapportOutput, datum); //datum går inte in, hjälp
+                        ra.Add(rapport);
+                       
                         Console.WriteLine($"Rapporten har lagts till: RapportNr: {rapport.RapportNr}, Datum: {rapport.Datum.DateTimeValue}, Polisstation: {rapport.PolisStation}, Beskrivning: {rapport.Beskrivning}");
                     }
                     else
@@ -107,9 +105,6 @@ internal class Program
                         Console.WriteLine($"Namn: {rp[i].Name} tjänstenummer: {rp[i].ServiceNr}");
                     }
                     Console.WriteLine();
-                    //Police.PoliceInfo(rp);
-                    
-
                     
                     break;
                 case 4:
