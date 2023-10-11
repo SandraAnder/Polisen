@@ -104,3 +104,42 @@ class Time
         Console.WriteLine($"Du har angett datum och tid: {DateTimeValue.ToString("yyyy-MM-dd HH:mm:ss")}");
     }
 }
+
+
+class Rapporter
+{
+    public string RapportDocu { get; set;}
+    public int RapportNr {get; set;}
+    public int Datum {get; set;}
+    public string PolisStation {get; set;}
+    public string Beskrivning {get; set;}
+
+    
+
+        
+    public Rapporter(string rapportDocu, string polisStation, string beskrivning, int rapportNr, int datum)
+    {
+        RapportDocu = rapportDocu;
+        RapportNr = rapportNr;
+        Datum = datum;
+        PolisStation = polisStation;
+        Beskrivning = beskrivning;
+
+       
+    }
+
+    public static void Rapport(List<Rapporter> ra, int rapportNr, int datum, string polisStation, string beskrivning)
+    {
+        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
+        Rapporter rap = new Rapporter(rapportDocu, polisStation, beskrivning, rapportNr, datum);
+        ra.Add(rap);
+    }
+    /*public static void Rapport(List<Rapporter> ra, int polisStation, string beskrivning, int rapportNr, int datum)
+    {
+
+        string rapportDocu = $"Plats: {rapportNr} Tid: {datum}  Typ: {polisStation}  Polis på plats: {beskrivning}";
+        Rapporter rap = new Rapporter(rapportDocu);
+        ra.Add(rap);
+
+    }*/
+}
